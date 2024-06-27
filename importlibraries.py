@@ -4,6 +4,8 @@ from transformers import (AutoTokenizer,
                           AutoModelForCausalLM,
                           BitsAndBytesConfig,
                           pipeline)
+from huggingface_hub import login
+login(token = #token)
 #HF account configuration
 config_data = json.load(open("config.json"))
 HF_TOKEN = config_data["HF_TOKEN"]
@@ -25,10 +27,11 @@ tokenizer = AutoTokenizer.from_pretrained(
 tokenizer.pad_token = tokenizer.eos_token
 
 model = AutoModelForCausalLM.from_pretrained(
-    model_name,
-    device_map='cpu',
-    quantization_config=bnb_config,
-    token=HF_TOKEN
+    #put the model name here, i.e meta-llama/Meta-Llama-3-8B,
+    #insert the token here
+    # device_map='cpu',
+    # quantization_config=bnb_config,
+    # token=HF_TOKEN
 )
 
 text_generator = pipeline(
